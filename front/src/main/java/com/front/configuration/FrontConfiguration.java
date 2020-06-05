@@ -27,7 +27,9 @@ public class FrontConfiguration {
 
 	@Override
 	public String toString() {
-		return "StorageConfiguration [url=" + url + ", basePath=" + basePath + "]";
+		return "FrontConfiguration [url=" + url + ", basePath=" + basePath + "]";
 	}
+
+
 	
 }
