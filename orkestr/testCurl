@@ -1,0 +1,1 @@
+curl -i -H "Content-Type:application/json" -d '{"name": "1", "secondaryName": "1", "patronymic": "no", "address": "flat"}' http://localhost:9092/orkestr/insert

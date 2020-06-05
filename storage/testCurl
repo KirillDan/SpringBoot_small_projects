@@ -1,0 +1,5 @@
+curl -i -H "Content-Type:application/json" -d '{"name": "Frodo", "secondaryName": "Baggins", "patronymic": "no", "address": "flat"}' http://localhost:9091/person
+
+Запускаем storage
+Запускаем orkestr
+curl -i -H "Content-Type:application/json" -d '{"name": "1", "secondaryName": "1", "patronymic": "no", "address": "flat"}' http://localhost:9091/person
