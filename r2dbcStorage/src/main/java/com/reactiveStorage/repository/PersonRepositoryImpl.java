@@ -5,7 +5,7 @@ import org.springframework.data.r2dbc.core.DatabaseClient;
 import org.springframework.data.r2dbc.query.Criteria;
 import org.springframework.stereotype.Service;
 
-import com.reactiveStorage.Entity.Person;
+import com.reactiveStorage.entity.User;
 
 import reactor.core.publisher.Mono;
 
@@ -15,16 +15,16 @@ public class PersonRepositoryImpl implements PersonRepository{
     @Autowired
     DatabaseClient databaseClient;
     
-    public void create(Person person) {
-    	databaseClient.insert().into(Person.class).using(person).fetch().one().subscribe();
+    public void create(User person) {
+    	databaseClient.insert().into(User.class).using(person).fetch().one().subscribe();
     }
 
-	public void create(Mono<Person> person) {
-		databaseClient.insert().into(Person.class).using(person).fetch().one().subscribe();	
+	public void create(Mono<User> person) {
+		databaseClient.insert().into(User.class).using(person).fetch().one().subscribe();	
 	}
 	
 	public void delete(Long id){
-		databaseClient.delete().from(Person.class).matching(Criteria.where("id").is(id)).fetch().rowsUpdated().subscribe();
+		databaseClient.delete().from(User.class).matching(Criteria.where("id").is(id)).fetch().rowsUpdated().subscribe();
 	}
 		
 }

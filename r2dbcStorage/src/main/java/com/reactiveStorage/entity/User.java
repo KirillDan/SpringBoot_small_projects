@@ -1,16 +1,13 @@
-package com.example.demo.entity;
+package com.reactiveStorage.entity;
 
 import java.util.Random;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Table;
 
-@Entity
-@Table(name = "users")
+@Table("users")
 public class User {
-	@Id @GeneratedValue
+	@Id 
 	private Long id;
 	private String name;
 	private String address;

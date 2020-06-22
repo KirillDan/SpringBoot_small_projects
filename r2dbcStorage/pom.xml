@@ -15,7 +15,8 @@
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
-		<java.version>1.8</java.version>
+		<java.version>11</java.version>
+		<spring.fox.version>3.0.0-SNAPSHOT</spring.fox.version>
 		<spring.framework.version>5.2.6.RELEASE</spring.framework.version>
 	</properties>
 
@@ -32,6 +33,11 @@
 </dependencyManagement>
 
 	<dependencies>
+		<dependency>
+    		<groupId>org.projectlombok</groupId>
+    		<artifactId>lombok</artifactId>
+    		<scope>provided</scope>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-webflux</artifactId>
