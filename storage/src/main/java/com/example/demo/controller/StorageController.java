@@ -15,34 +15,35 @@ import com.example.demo.entity.IdAddressDto;
 import com.example.demo.entity.IdNameDto;
 import com.example.demo.entity.NameAddressDto;
 import com.example.demo.entity.User;
-import com.example.demo.repository.UserRepository;
+import com.example.demo.service.StorageService;
 
 @RestController()
 @RequestMapping(value = "/api/users")
 public class StorageController {	
-	private UserRepository userRepository;
+	private StorageService storageService;
 	
 	@Autowired
-	public StorageController(UserRepository userRepository){
-		this.userRepository = userRepository;
+	public StorageController(StorageService storageService){
+		this.storageService = storageService;
 	}
 	@GetMapping(value = "/{id}/name")
 	public ResponseEntity<IdNameDto> name(@PathVariable("id") Long id){
-		Optional<User> userOptional = userRepository.findById(id);
-		User user = userOptional.get();
-		IdNameDto idName = new IdNameDto(user.getId(), user.getName());
+		IdNameDto idName = storageService.findName(id);
 		return ResponseEntity.ok(idName);
 	}
 	@GetMapping(value = "/{id}/address")
 	public ResponseEntity<IdAddressDto> address(@PathVariable("id") Long id){
-		Optional<User> userOptional = userRepository.findById(id);
-		User user = userOptional.get();
-		IdAddressDto idAddress = new IdAddressDto(user.getId(), user.getAddress());
+		IdAddressDto idAddress = storageService.findAddress(id);
 		return ResponseEntity.ok(idAddress);
+	}
+	@GetMapping(value = "/{id}")
+	public ResponseEntity<User> user(@PathVariable("id") Long id){
+		User user = storageService.findUser(id);
+		return ResponseEntity.ok(user);
 	}
 	@PostMapping
 	public ResponseEntity<User> create(@RequestBody NameAddressDto nameAddress) {
-		User user = userRepository.save(new User(nameAddress.getName(), nameAddress.getAddress()));
+		User user = storageService.createUser(nameAddress);
 		return ResponseEntity.ok(user);
 	}
 }

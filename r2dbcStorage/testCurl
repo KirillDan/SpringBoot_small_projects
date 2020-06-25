@@ -1,1 +1,1 @@
-curl -i -H "Content-Type:application/json" -d '{"id": "100", "name": "1", "secondaryName": "1", "patronymic": "no", "address": "flat"}' http://localhost:8080/person
+curl -X POST "http://localhost:8081/api/users" -H "accept: */*" -H "Content-Type: application/json" -d "{ \"address\": \"string\", \"name\": \"string\"}"

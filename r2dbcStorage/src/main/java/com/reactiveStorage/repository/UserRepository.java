@@ -4,7 +4,7 @@ import com.reactiveStorage.entity.User;
 
 import reactor.core.publisher.Mono;
 
-public interface PersonRepository {
+public interface UserRepository {
 	
 	public void create(User person);
 	

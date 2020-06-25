@@ -3,15 +3,15 @@ package com.reactiveStorage.repository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.r2dbc.core.DatabaseClient;
 import org.springframework.data.r2dbc.query.Criteria;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
 import com.reactiveStorage.entity.User;
 
 import reactor.core.publisher.Mono;
 
-@Service
-public class PersonRepositoryImpl implements PersonRepository{
-	
+@Repository
+public class UserRepositoryImpl implements UserRepository{
+
     @Autowired
     DatabaseClient databaseClient;
     

@@ -16,7 +16,7 @@ public class User {
 	public User(String name, String address) {
 		this.name = name;
 		this.address = address;
-		this.id = (new Random()).nextLong();
+		this.id = Math.abs((long) (new Random()).nextInt());
 	}
 	public Long getId() {
 		return id;

@@ -1,5 +1,1 @@
-curl -i -H "Content-Type:application/json" -d '{"name": "Frodo", "secondaryName": "Baggins", "patronymic": "no", "address": "flat"}' http://localhost:9091/person
-
-Запускаем storage
-Запускаем orkestr
-curl -i -H "Content-Type:application/json" -d '{"name": "1", "secondaryName": "1", "patronymic": "no", "address": "flat"}' http://localhost:9091/person
+curl -X POST "http://localhost:8081/api/users" -H "accept: */*" -H "Content-Type: application/json" -d "{ \"address\": \"string\", \"name\": \"string\"}"
