@@ -10,5 +10,5 @@ public interface UserRepository {
 	
 	public void create(Mono<User> person);
 	
-	public void delete(Long id);
+	public Mono<User> findById(Long id);
 }

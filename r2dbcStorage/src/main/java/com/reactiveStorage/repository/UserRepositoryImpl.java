@@ -11,20 +11,18 @@ import reactor.core.publisher.Mono;
 
 @Repository
 public class UserRepositoryImpl implements UserRepository{
-
     @Autowired
     DatabaseClient databaseClient;
     
     public void create(User person) {
     	databaseClient.insert().into(User.class).using(person).fetch().one().subscribe();
     }
-
 	public void create(Mono<User> person) {
 		databaseClient.insert().into(User.class).using(person).fetch().one().subscribe();	
 	}
-	
-	public void delete(Long id){
-		databaseClient.delete().from(User.class).matching(Criteria.where("id").is(id)).fetch().rowsUpdated().subscribe();
+	public Mono<User> findById(Long id) {
+		return databaseClient.select().from(User.class).matching(Criteria.where("id").is(id)).fetch().one()
+		.switchIfEmpty(Mono.error(new RuntimeException("User not found")));
 	}
 		
 }

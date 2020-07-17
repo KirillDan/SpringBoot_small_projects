@@ -19,14 +19,12 @@ import reactor.core.publisher.Mono;
 @RestController()
 @RequestMapping(value = "/api/users")
 public class PersonController {
-	
 	private StorageService storageService;
 	
 	@Autowired
 	public PersonController(StorageService storageService) {
 		this.storageService = storageService;
 	}
-	
 	@GetMapping(value = "/{id}/name")
 	public Mono<IdNameDto> name(@PathVariable("id") Long id){
 		Mono<IdNameDto> IdNameDtoMono = storageService.name(id);

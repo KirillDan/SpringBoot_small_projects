@@ -7,7 +7,6 @@ import com.reactiveStorage.entity.IdAddressDto;
 import com.reactiveStorage.entity.IdNameDto;
 import com.reactiveStorage.entity.NameAddressDto;
 import com.reactiveStorage.entity.User;
-import com.reactiveStorage.repository.UserCrudRepository;
 import com.reactiveStorage.repository.UserRepository;
 
 import reactor.core.publisher.Mono;
@@ -15,26 +14,24 @@ import reactor.core.publisher.Mono;
 @Service
 public class StorageService {
 	private UserRepository userRepository;
-	private UserCrudRepository userCrudRepository;
 	
 	@Autowired
-	public StorageService(UserRepository userRepository, UserCrudRepository userCrudRepository) {
+	public StorageService(UserRepository userRepository) {
 		this.userRepository = userRepository;
-		this.userCrudRepository = userCrudRepository;
 	}
 	
 	public Mono<IdNameDto> name(Long id){
-		Mono<User> userMono = userCrudRepository.findById(id);
+		Mono<User> userMono = userRepository.findById(id);
 		return userMono.map(user -> new IdNameDto(user.getId(), user.getName()));
 	}
 	
 	public Mono<IdAddressDto> address(Long id){
-		Mono<User> userMono = userCrudRepository.findById(id);
+		Mono<User> userMono = userRepository.findById(id);
 		return userMono.map(user -> new IdAddressDto(user.getId(), user.getName()));
 	}
 	
 	public Mono<User> user(Long id){
-		return userCrudRepository.findById(id);
+		return userRepository.findById(id);
 	}
 	
 	public Mono<User> create(Mono<NameAddressDto> nameAddressMono){
