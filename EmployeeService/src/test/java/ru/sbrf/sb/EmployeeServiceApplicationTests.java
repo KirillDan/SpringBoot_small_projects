@@ -1,10 +1,10 @@
-package com.keycloak;
+package ru.sbrf.sb;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class KeycloakApplicationTests {
+class EmployeeServiceApplicationTests {
 
 	@Test
 	void contextLoads() {

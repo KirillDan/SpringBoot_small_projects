@@ -1,4 +1,4 @@
-package com.keycloak.config;
+package ru.sbrf.sb.config;
 
 import org.keycloak.adapters.springboot.KeycloakSpringBootConfigResolver;
 import org.keycloak.adapters.springsecurity.authentication.KeycloakAuthenticationProvider;
@@ -17,17 +17,15 @@ import org.springframework.security.web.authentication.session.SessionAuthentica
 
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(jsr250Enabled = true)
 public class KeycloakSecurityConfig extends KeycloakWebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         super.configure(http);
         http.authorizeRequests()
-        	.antMatchers("/test/anonymous").permitAll()
-        	.antMatchers("/test/user").hasAnyRole("user")
-        	.antMatchers("/test/admin").hasAnyRole("admin")
-        	.antMatchers("/test/all-user").hasAnyRole("user","admin")
+        	//.antMatchers("sb/employee").permitAll()
+        	.antMatchers("/sb/*").hasAnyRole("user")
+        	//.antMatchers("sb/project").hasAnyRole("admin")
             .anyRequest()
             .permitAll();
         http.csrf().disable();
