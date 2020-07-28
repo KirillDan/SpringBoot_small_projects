@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<header>
+	<a th:href="@{/login}">Login</a>
+	<a th:href="@{/getToken}">Token</a>
+	<a th:href="@{/employeeCreate}">employeeCreate</a>
+	<a th:href="@{/employeeAll}">employeeAll</a>
+</header>
+	<div>
+		<form action="#" th:action="@{/getToken}" th:object="${postDto}" method="post">
+			<label>username</label>
+			<input type="text" th:field="*{username}" />
+			<br>
+			<label>password</label>
+			<input type="text" th:field="*{password}" />
+			<br>
+			<button name="get_token" type="submit" value="1">get token</button>
+		</form>
+	</div>
+</body>
+</html>

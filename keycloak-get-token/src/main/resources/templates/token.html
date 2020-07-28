@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<header>
+	<a th:href="@{/login}">Login</a>
+	<a th:href="@{/getToken}">Token</a>
+	<a th:href="@{/employeeCreate}">employeeCreate</a>
+	<a th:href="@{/employeeAll}">employeeAll</a>
+</header>
+	<div>
+		 <p th:text="${token}" />
+	</div>
+</body>
+</html>

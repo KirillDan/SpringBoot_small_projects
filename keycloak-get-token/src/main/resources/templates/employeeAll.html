@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<header>
+	<a th:href="@{/login}">Login</a>
+	<a th:href="@{/getToken}">Token</a>
+	<a th:href="@{/employeeCreate}">employeeCreate</a>
+	<a th:href="@{/employeeAll}">employeeAll</a>
+</header>
+	<table>
+    <thead>
+      <tr>
+        <th>employeeId</th>
+        <th>name</th>
+        <th>secondaryName</th>
+        <th>position</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="employee : ${employees}">
+        <td th:text="${{employee.employeeId}}"></td>		
+		<td th:text="${{employee.name}}"></td>
+		<td th:text="${{employee.secondaryName}}"></td>
+		<td th:text="${{employee.position}}"></td>
+		<td><a th:href="@{'/employeeDelete/' + ${employee.employeeId}}">delete</a></td>
+      </tr>
+    </tbody>
+  </table>
+
+</body>
+</html>
